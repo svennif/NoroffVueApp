@@ -1,6 +1,8 @@
 <template>
   <div id="app">
-    <Recipe msg="This is a title" />
+    <ul class="recipe-title" v-for="(item, i) in recipes" : key="i">
+      <li>{{ item.title }}</li>
+    </ul>
   </div>
 </template>
 
@@ -19,18 +21,19 @@ export default {
     const proxyUrl = "https://cors-anywhere.herokuapp.com/";
 
     fetch(proxyUrl + url)
-      .then((response) => response.json())
       .then((response) => {
-        console.log(response.results);
+        return response.json();
+      })
+      .then((data) => {
+        this.recipes = data.results;
+        console.log(data.results);
       })
       .catch((error) => {
-        console.log('Error: ', error);
+        console.log("Error: ", error);
       });
   }, // fetch function
   components: {
-    Recipe,
+    Recipe: Recipe,
   }, // components
 }; // default
 </script>
-
-<style></style>

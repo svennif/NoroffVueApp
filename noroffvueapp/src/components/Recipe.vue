@@ -1,17 +1,19 @@
 <template>
-  <div class="hello">
-    <h1>{{ msg }}</h1>
+  <div id="app">
+    <ul class="recipe-title" v-for="(item, i) in recipes" : key="i">
+      <li>{{ item.title }}</li>
+    </ul>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'HelloWorld',
+  name: "Recipe",
   props: {
-    msg: String
+    msg: String,
+    title: String
   } // props
-  
-}
+};
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
@@ -19,5 +21,4 @@ export default {
 h3 {
   margin: 40px 0 0;
 }
-
 </style>

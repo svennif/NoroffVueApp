@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <Recipe :title="recipes" />
+    <recipe-list :title="recipes" />
   </div>
 </template>
 
@@ -15,7 +15,7 @@ export default {
     }; // return
   }, // data
   components: {
-    Recipe,
+    "recipe-list": Recipe,
   }, // components
   created: function () {
     const url = "http://www.recipepuppy.com/api/";
@@ -26,7 +26,7 @@ export default {
         return response.json();
       })
       .then((data) => {
-        this.recipes = JSON.stringify(data.results[0]);
+        this.recipes = JSON.stringify(data.results);
         console.log(data.results);
       })
       .catch((error) => {

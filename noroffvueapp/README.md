@@ -1,24 +1,15 @@
 # noroffvueapp
 
 ## Project setup
+Open your terminal, run
 ```
 npm install
 ```
-
-### Compiles and hot-reloads for development
+## To get the project running use
 ```
 npm run serve
 ```
-
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
+### Use the link provided by the terminal
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).

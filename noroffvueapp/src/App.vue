@@ -1,11 +1,12 @@
 <template>
   <div id="app">
-    <recipe-list :title="recipes" />
+    <recipe-list v-for="(x, i) in recipes" v-bind:key="i" v-bind:recipe="x"/>
   </div>
 </template>
 
 <script>
 import Recipe from "./components/Recipe.vue";
+import axios from 'axios';
 
 export default {
   name: "App",
@@ -16,22 +17,20 @@ export default {
   }, // data
   components: {
     "recipe-list": Recipe,
-  }, // components
+  }, // component
   created: function () {
     const url = "http://www.recipepuppy.com/api/";
     const proxyUrl = "https://cors-anywhere.herokuapp.com/";
 
-    fetch(proxyUrl + url)
-      .then((response) => {
-        return response.json();
-      })
-      .then((data) => {
-        this.recipes = JSON.stringify(data.results);
-        console.log(data.results);
-      })
-      .catch((error) => {
-        console.log("Error: ", error);
-      });
+    axios.get(proxyUrl + url) 
+    .then(resp => {
+      console.log(resp);
+      this.recipes = resp.data.results;
+    })
+    .catch(err => {
+      console.log(err);
+    })
+
   }, // fetch function
 }; // default
 </script>

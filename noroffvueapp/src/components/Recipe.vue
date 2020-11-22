@@ -1,27 +1,31 @@
 <template>
-  <div>
-    <ul class="recipe" v-for="(item, i) in thisIsAtest" :key="i">
-      <li>
-        <div>{{ item[i].title }}</div>
-      </li>
-    </ul>
-  </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4">
+          <div class="card">
+            <img class="img-fluid card-img-top" v-bind:src="recipe.thumbnail" alt="thumbnail of recipe"/>
+            <div class="card-body">
+            <h1 class="card-title">{{ recipe.title }}</h1>
+            <p class="card-text">{{ recipe.ingredients }}</p>
+            <a class="card-text">{{ recipe.href }}</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 </template>
 
 <script>
 export default {
   name: "Recipe",
-  props: ['thisIsAtest'],
+  props: ["recipe"],
 };
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-.recipe {
-  margin: 0;
-  padding: 0;
-  list-style-type: none;
-  margin: 10px 5%;
-  font: 1.5rem;
-}
+  .container {
+    margin: 20px;
+    display: block;
+  }
 </style>

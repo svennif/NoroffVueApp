@@ -30,7 +30,6 @@ export default {
     .catch(err => {
       console.log(err);
     })
-
   }, // fetch function
 }; // default
 </script>

@@ -1,8 +1,6 @@
 <template>
   <div id="app">
-    <ul class="recipe-title" v-for="(item, i) in recipes" : key="i">
-      <li>{{ item.title }}</li>
-    </ul>
+    <Recipe :title="recipes" />
   </div>
 </template>
 
@@ -16,6 +14,9 @@ export default {
       recipes: [],
     }; // return
   }, // data
+  components: {
+    Recipe,
+  }, // components
   created: function () {
     const url = "http://www.recipepuppy.com/api/";
     const proxyUrl = "https://cors-anywhere.herokuapp.com/";
@@ -25,15 +26,12 @@ export default {
         return response.json();
       })
       .then((data) => {
-        this.recipes = data.results;
+        this.recipes = JSON.stringify(data.results[0]);
         console.log(data.results);
       })
       .catch((error) => {
         console.log("Error: ", error);
       });
   }, // fetch function
-  components: {
-    Recipe: Recipe,
-  }, // components
 }; // default
 </script>

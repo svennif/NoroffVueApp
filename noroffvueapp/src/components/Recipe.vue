@@ -1,6 +1,6 @@
 <template>
-  <div id="app">
-    <ul class="recipe-title" v-for="(item, i) in recipes" : key="i">
+  <div>
+    <ul class="test" v-for="(item, i) in title" :key="i">
       <li>{{ item.title }}</li>
     </ul>
   </div>
@@ -9,10 +9,7 @@
 <script>
 export default {
   name: "Recipe",
-  props: {
-    msg: String,
-    title: String
-  } // props
+  props: ["title"],
 };
 </script>
 
